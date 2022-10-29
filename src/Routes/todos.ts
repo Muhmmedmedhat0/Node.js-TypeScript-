@@ -1,13 +1,14 @@
+import { createTodo, deleteTodo, getTodo, updateTodo } from "./../Controllers/todos";
 import { Router } from "express";
 const router = Router();
 
 // POST /api/
-router.post("/");
+router.post("/", createTodo);
 // Get /api/
-router.get("/");
+router.get("/", getTodo);
 // PUT /api/users/
-router.put("/:id");
+router.put("/:id", updateTodo);
 // DELETE /api/users
-router.delete("/:id");
+router.delete("/:id", deleteTodo);
 
 export default router;
