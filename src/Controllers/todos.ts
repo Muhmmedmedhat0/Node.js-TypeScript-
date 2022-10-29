@@ -27,6 +27,9 @@ export const updateTodo: RequestHandler = (req, res, next) => {
 
 export const deleteTodo: RequestHandler = (req, res, next) => {
   const { id } = req.params as { id: string };
-  TODOS = TODOS.filter((todo) => todo.id !== id);
+  const todo = TODOS.find((todo) => todo.id === id);
+  if (!todo) {
+    throw new Error("Todo not found");
+  }
   res.status(200).json(TODOS);
 };
